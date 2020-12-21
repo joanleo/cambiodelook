@@ -33,7 +33,6 @@ docutils==0.15.2
 edx-dl==0.1.13
 Flask==1.1.2
 gast==0.3.3
-get==2019.4.13
 google-auth==1.14.1
 google-auth-oauthlib==0.4.1
 google-pasta==0.2.0
