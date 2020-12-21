@@ -147,6 +147,21 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jleonocampo@gmail.com'
 EMAIL_HOST_PASSWORD = 'joan1984leon' #https://myaccount.google.com/lesssecureapps
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
 
 """STATICFILES_FINDERS = 'djangobower.finders.BowerFinder'
 BOWER_COMPONENTS_ROOT = '/PROJECT_ROOT/components/'
