@@ -1,0 +1,77 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Profesional: </h5>
+                <hr>
+                <a class="btn btn-outline-info btn-sm-block" href="{% url 'app:update_profesional' profesional.id %}">Actualizar</a>
+                <a class="btn btn-outline-danger btn-sm-block" href="{% url 'app:delete_profesional' profesional.id %}">Eliminar</a>
+
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Informacio de Contacto</h5>
+                <hr>
+                <p>Email: {{ profesional.email }}</p>
+                <p>Phone: {{ profesional.phone }}</p>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Total Ordenes</h5>
+                <hr>
+                <h1 style="text-align:center;padding:10px">{{ order_count }}</h1>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form action="" method="GET">
+
+                    {{ myFilter.form }}
+
+                    <button class="btn btn-primary" type="submit" style="margin-left: 350px;"><i class="fas fa-search-plus"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Service</th>
+                        <th>Category</th>
+                        <th>Date Order</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Remove</th>
+                    </tr>
+                    {% for order in orders %}
+                    <tr>
+                        <th>{{ order.product }}</th>
+                        <th>{{ order.product.category }}</th>
+                        <th>{{ order.date_created }}</th>
+                        <th>{{ order.status }}</th>
+                        <th><a class="btn btn-primary" href="{% url 'app:update_order' order.id %}"><i class="fas fa-pencil-alt"></i></a></th>
+                        <th><a class="btn btn-danger" href="{% url 'app:delete_order' order.id %}"><i class="far fa-trash-alt"></i></a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

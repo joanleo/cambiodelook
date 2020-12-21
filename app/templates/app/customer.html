@@ -1,0 +1,92 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Cliente: </h5>
+                <hr>
+                <a class="btn btn-outline-info btn-sm-block" href="{% url 'app:update_customer' customer.id%}">Editar</a>
+                <a class="btn btn-outline-info btn-sm-block" href="{% url 'app:create_order' customer.id %}">Crear</a>
+
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Informacion de Contacto</h5>
+                <hr>
+                <p>Email: {{ customer.email }}</p>
+                <p>Phone: {{ customer.phone }}</p>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Total Ordenes</h5>
+                <hr>
+                <h1 style="text-align:center;padding:10px">{{ order_count }}</h1>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form action="" method="GET">
+
+                    {{ form.non_field_errors }}
+                        {{ myFilter.form.product.errors }}
+                        <label style="margin:auto;" for="{{ myFilter.form.product.id_for_label }}">Servicio:</label>
+                        {{ myFilter.form.product }}
+
+                        {{ form.non_field_errors }}
+                        {{ myFilter.form.status.errors }}
+                        <label style="margin-left: 30px;" for="{{ myFilter.form.status.id_for_label }}">Estado:</label>
+                        {{ myFilter.form.status }}
+
+                        {{ form.non_field_errors }}
+                        {{ myFilter.form.profesional.errors }}
+                        <label style="margin-left: 30px;" for="{{ myFilter.form.profesional.id_for_label }}">Profesional:</label>
+                        {{ myFilter.form.profesional }}
+
+                    
+
+                    <button class="btn btn-primary" type="submit" style="margin-left: 350px;"><i class="fas fa-search-plus"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Categoria</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                    {% for order in orders %}
+                    <tr>
+                        <th>{{ order.product }}</th>
+                        <th>{{ order.product.category }}</th>
+                        <th>{{ order.date_created }}</th>
+                        <th>{{ order.status }}</th>
+                        <th><a class="btn btn-primary" href="{% url 'app:update_order' order.id %}"><i class="fas fa-pencil-alt"></i></a></th>
+                        <th><a class="btn btn-danger" href="{% url 'app:delete_order' order.id %}"><i class="far fa-trash-alt"></i></a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

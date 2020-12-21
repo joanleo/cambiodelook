@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-10">
+        <div class="card card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ formset.management_form }}
+                {% for form in formset %}
+                {{ form }}
+                <hr>
+                {% endfor %}
+                <input class="btn btn-primary" type="submit" name="Submit" value="Guardar">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

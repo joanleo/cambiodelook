@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-10">
+        <div class="card card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper">
+                    {{ form.customer.errors }}
+                    <label style="margin-right: 45px;" for="{{ form.customer.id_for_label }}">Cliente:</label>
+                    {{ form.customer }}
+                </div>
+                <hr>
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper">
+                    {{ form.product.errors }}
+                    <label style="margin-right: 40px;" for="{{ form.product.id_for_label }}">Servicio:</label>
+                    {{ form.product }}
+                </div>
+                <hr>
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper">
+                    {{ form.status.errors }}
+                    <label style="margin-right: 50px;" for="{{ form.status.id_for_label }}">Estado:</label>
+                    {{ form.status }}
+                </div>
+                <hr>
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper">
+                    {{ form.profesional.errors }}
+                    <label style="margin-right: 20px;" for="{{ form.profesional.id_for_label }}">Profesional:</label>
+                    {{ form.profesional }}
+                </div>
+                <hr>
+                <hr>
+                <input class="btn btn-primary" type="submit" name="Submit" value="Guardar">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

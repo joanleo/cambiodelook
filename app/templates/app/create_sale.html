@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<form action="" method="post">
+    {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper">
+                    {{ form.customer.errors }}
+                    <label style="margin-right: 20px;" for="{{ form.customer.id_for_label }}">Cliente:</label>
+                    {{ form.customers }}
+                </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Clientes</h5>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th><h3>Nombre</h3></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    {% for customer in customers %}
+                    <tr>
+                        <th><a href="{% url 'app:customer' customer.id %}">{{ customer.name }}</a></th>
+                        <th><a class="btn btn-primary btn-sm " href="{% url 'app:update_customer' customer.id %}"><i class="far fa-eye"></i></a></th>
+                        <th><a class="btn btn-danger btn-sm" href="{% url 'app:delete_customer' customer.id %}"><i class="far fa-trash-alt"></i></a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

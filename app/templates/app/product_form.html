@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row" style="justify-content: center;">
+    <div class="col-md-10">
+        <div class="card card-title" style="text-align: center;">
+            <h2>Servicio</h2>
+        </div>
+        <div class="card card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper">
+                    {{ form.name.errors }}
+                    <label style="margin-right: 20px;" for="{{ form.name.id_for_label }}">Nombre:</label>
+                    {{ form.name }}
+                </div>
+                <hr>
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper">
+                    {{ form.price.errors }}
+                    <label style="margin-right: 35px;" for="{{ form.price.id_for_label }}">Precio:</label>
+                    {{ form.price }}
+                </div>
+                <hr>
+                <div class="fieldWrapper">
+                    {{ form.category.errors }}
+                    <label style="margin-right: 10px;" for="{{ form.category.id_for_label }}">Categoria:</label>
+                    {{ form.category }}
+                </div>
+                <hr>
+                <div class="fieldWrapper">
+                    {{ form.description.errors }}
+                    <label for="{{ form.description.id_for_label }}">Descripcion:</label>
+                    {{ form.description }}
+                </div>
+                <hr>
+                <div>
+                    <input class="btn btn-primary" type="submit" name="Submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

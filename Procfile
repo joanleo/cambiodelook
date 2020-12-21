@@ -1,0 +1,1 @@
+web: gunicorn CambioDeLook.wsgi --log-file -

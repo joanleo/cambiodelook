@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Profesionales</h5>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Profesional</th>
+                        <th>Servicio</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    {% for profesional in profesionals %}
+                    <tr>
+                        <th><a href="{% url 'app:profesional' profesional.id %}">{{ profesional.name }}</a></th>
+                        <th></th>
+                        <th><a class="btn btn-primary" href="{% url 'app:update_profesional' profesional.id %}"><i class="far fa-eye"></i></a></th>
+                        <th><a class="btn btn-danger" href="{#{% url 'app:delete_product' product.id %}#}"><i class="far fa-trash-alt"></i></a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-7">
+        <div class="card card-body">
+            <h4><p>Seguro desea borrar este servicio "{{ item }}"?</p></h3>
+            <form action="{% url 'app:delete_order' item.id %}" method="POST">
+                {% csrf_token %}
+
+                <a class="btn btn-primary" href="{% url 'app:home' %}">Cancel</a>
+                <input type="submit" name="Confirm" value="Borrar" class="btn btn-danger">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
