@@ -43,7 +43,7 @@ class Saleform(ModelForm):
         self.fields['customers'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['customers'].widget.attrs['style'] = 'width: 70%'
 
-        print(self.fields)
+        #print(self.fields)
 
         self.fields['iva'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['iva'].widget.attrs['readonly'] = True

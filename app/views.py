@@ -196,7 +196,7 @@ def CreateProfesional(request):
 
 def UpdateProfesional(request, pk):
     profesional = Profesional.objects.get(id=pk)
-    print(profesional.profile_pic.url)
+    #print(profesional.profile_pic.url)
     form = ProfesionalForm(instance=profesional)
 
     if request.method == 'POST':
@@ -321,7 +321,7 @@ def UpdateOrder(request, pk):
             return redirect('/')
     
     context = {'form': form}
-    print(context)
+    #print(context)
     
     return render(request, 'app/edit_order.html', context)
 
@@ -354,12 +354,12 @@ def CreateSale(request):
     total = subtotal['product__price__sum'] + total_iva"""
     
     form = Saleform()
-    print(form)
+    #print(form)
     if request.method == 'POST':
         form = Saleform(request.POST)
-        print(form)
+        #print(form)
         #customerForm = custoForm(request.POST['customer'])
-        print(form)
+        #print(form)
         if form.is_valid:
             form.save()
             redirect('/')

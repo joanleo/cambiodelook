@@ -11,7 +11,7 @@ class EventForm(ModelForm):
       #'fin': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
     }
     fields = '__all__'
-    exclude= ['status', 'date_created', 'fin', 'product']
+    exclude= ['status', 'date_created', 'fin']
 
   def __init__(self, *args, **kwargs):
     super(EventForm, self).__init__(*args, **kwargs)

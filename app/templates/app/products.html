@@ -3,13 +3,13 @@
 {% block content %}
     <br>
 
-    <div class="row">
-        <div class="col-md">
-            <div class="card card-body">
+    <div class="row ">
+        <div class="col-md col-sm col-xl p-1">
+            <div class="card card-body ml-0">
                 <h2>Servicios</h2>
             </div>
             <div class="card card-body">
-                <table class="table">
+                <table class="table-responsive{-sm|-md|-lg|-xl}">
                     <tr>
                         <th>Servicio</th>
                         <th>Categoria</th>
@@ -21,9 +21,9 @@
                     <tr>
                         <th>{{ product.name }}</th>
                         <th>{{ product.category }}</th>
-                        <th>$ {{ product.price }}</th>
-                        <th><a class="btn btn-primary" href="{% url 'app:update_product' product.id %}"><i class="fas fa-pencil-alt"></i></a></th>
-                        <th><a class="btn btn-danger" href="{% url 'app:delete_product' product.id %}"><i class="far fa-trash-alt"></i></a></th>
+                        <th nowrap>$ {{ product.price }}</th>
+                        <th><a class="btn btn-primary btn-sm btn-lg btn-md" href="{% url 'app:update_product' product.id %}"><i class="fas fa-pencil-alt"></i></a></th>
+                        <th><a class="btn btn-danger btn-sm btn-lg btn-md" href="{% url 'app:delete_product' product.id %}"><i class="far fa-trash-alt"></i></a></th>
                     </tr>
                     {% endfor %}
                 </table>

@@ -72,7 +72,7 @@ def event(request, event_id=None):
         fin = dt.time(hour=hora+1, minute= minuto)
         print(fin)"""
         form1 = OrderForm({'customer':request.POST['cliente'], 'product':request.POST['product'], 'date_created':request.POST.get('date_created', timezone.now()), 'status':'Pending','profesional':request.POST['profesional'] })
-        print(form1)
+        print(request.POST['product'])
         if form1.is_valid():
             form1.save()
 

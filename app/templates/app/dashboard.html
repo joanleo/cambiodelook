@@ -8,13 +8,13 @@
 
 <br>
 
-<div class="row">
-    <div class="col-md-5">
+<div class="row flex-sm-row">
+    <div class="col-md-5 flex-md-column flex-lg-column flex-sm-column">
         <h5>Clientes</h5>
         <hr>
-        <div class="card-body">
+        <div class="card-body pl-0">
             <a class="btn btn-primary btn-sm btn-block" href="{% url 'app:create_customer' %}">Crear Cliente</a>
-            <table class="table table-sm">
+            <table class="table table-fit table-responsive{-sm|-md|-lg|-xl}">
                 <tr>
                     <th></th>
                     <th>Nombre</th>
@@ -22,7 +22,7 @@
                 </tr>
                 {% for customer in customers %}
                 <tr>
-                    <th><a class="btn btn-primary" href="{% url 'app:customer' customer.id %}"><i class="far fa-eye"></i></a></th>
+                    <th><a class="btn btn-primary btn-sm btn-lg btn-md" href="{% url 'app:customer' customer.id %}"><i class="far fa-eye"></i></a></th>
                     <th>{{ customer.name }}</th>
                     <th>{{ customer.phone }}</th>
                 </tr>
@@ -34,28 +34,31 @@
     <div class="col-md-7">
         <h5>Ultimas 5 Ordenes</h5>
         <hr>
-        <div class="card-body">
+        <div class="card-body pl-0">
             <div>
-                <a class="btn" href=""></a>
+                <a class="btn btn-sm btn-lg btn-md" href=""></a>
             </div>
-            <table class="table table-sm" >
-                <tr>
-                    <th>Servicio</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-                {% for order in orders %}
-                <tr>
-                    <th>{{ order.product }}</th>
-                    <th>{{ order.date_created|date:'SHORT_DATE_FORMAT' }}</th>
-                    <th>{{ order.status }}</th>
-                    <th><a class="btn btn-primary" href="{% url 'app:update_order' order.id %}"><i class="fas fa-pencil-alt"></i></a></th>
-                    <th><a class="btn btn-danger" href="{% url 'app:delete_order' order.id %}"><i class="far fa-trash-alt"></i></a></th>
-                </tr>
-                {% endfor %}
-            </table>
+            <div>
+
+                <table class="table table-fit table-responsive{-sm|-md|-lg|-xl}" >
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                    {% for order in orders %}
+                    <tr>
+                        <th>{{ order.product }}</th>
+                        <th>{{ order.date_created|date:'SHORT_DATE_FORMAT' }}</th>
+                        <th>{{ order.status }}</th>
+                        <th><a class="btn btn-primary btn-sm btn-lg btn-md" href="{% url 'app:update_order' order.id %}"><i class="fas fa-pencil-alt"></i></a></th>
+                        <th><a class="btn btn-danger btn-sm btn-lg btn-md" href="{% url 'app:delete_order' order.id %}"><i class="far fa-trash-alt"></i></a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 

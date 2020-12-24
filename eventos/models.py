@@ -33,7 +33,7 @@ class Event(models.Model):
         hora = int(hora)
         minuto = int(minuto)
         fin = datetime.time(hour=hora+1, minute= minuto)
-        print(fin)
+        #print(fin)
         super(Event, self).save(*args, **kwargs)
         
 
