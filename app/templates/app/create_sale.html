@@ -11,6 +11,12 @@
                     <label style="margin-right: 20px;" for="{{ form.customer.id_for_label }}">Cliente:</label>
                     {{ form.customers }}
                 </div>
+                <div class="fieldWrapper">
+                    {{ form.product.errors}}
+                    <label style="margin-right: 20px;" for="{{ form.product.id_for_label }}">Servicios:</label>
+                    {{ form.products }}
+                </div>
+                <input type="submit" value="submit">
 </form>
 
 {% endblock %}

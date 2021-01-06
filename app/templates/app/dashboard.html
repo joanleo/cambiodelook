@@ -13,13 +13,17 @@
         <h5>Clientes</h5>
         <hr>
         <div class="card-body pl-0">
-            <a class="btn btn-primary btn-sm btn-block" href="{% url 'app:create_customer' %}">Crear Cliente</a>
+            <div>
+                <a class="btn btn-primary btn-sm btn-block" href="{% url 'app:create_customer' %}">Crear Cliente</a>
+            </div>
             <table class="table table-fit table-responsive{-sm|-md|-lg|-xl}">
-                <tr>
-                    <th></th>
-                    <th>Nombre</th>
-                    <th>Telefono</th>
-                </tr>
+                <thead class="thead-light">
+                    <tr>
+                        <th></th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                    </tr>
+                </thead>
                 {% for customer in customers %}
                 <tr>
                     <th><a class="btn btn-primary btn-sm btn-lg btn-md" href="{% url 'app:customer' customer.id %}"><i class="far fa-eye"></i></a></th>
@@ -34,20 +38,22 @@
     <div class="col-md-7">
         <h5>Ultimos 5 Servicios</h5>
         <hr>
-        <div class="card-body pl-0" style="overflow: scroll;">
+       <!--  <div class="card-body pl-0" style="overflow: scroll;">
             <div>
                 <a class="btn btn-sm btn-lg btn-md" href=""></a>
-            </div>
-            <div>
+            </div> 
+            <div> -->
 
-                <table class="table table-fit table-responsive{-sm|-md|-lg|-xl} ">
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Fecha</th>
-                        <th>Estado</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
-                    </tr>
+                <table class="table table-fit table-responsive{-sm|-md|-lg|-xl} " style="margin-top: 2em;">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
                     {% for order in orders %}
                     <tr>
                         <th>{{ order.product }}</th>

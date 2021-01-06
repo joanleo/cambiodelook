@@ -60,6 +60,7 @@ class Saleform(ModelForm):
 
     
     customers = forms.ModelChoiceField(queryset=Customer.objects.all(), empty_label="")
+    products = forms.ModelChoiceField(queryset=Product.objects.all(), empty_label="")
     date_created = forms.DateTimeField()
     subtotal = models.DecimalField()
     iva = models.DecimalField()

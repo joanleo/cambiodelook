@@ -2,13 +2,212 @@
 <html>
     
 <head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Login</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+</head>
+<style>
+	body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+    font-family: 'Mulish', sans-serif;    
+    color: #343a40;
+    background: linear-gradient(#21c88b, #ab88ff);
+    background-attachment: fixed;
+	}
+	.login {
+	margin: 30px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 30px;
+    min-height: calc(100vh - 200px);
+	}
+	.login-container {
+    background-color: #cacccf;
+    border: 2px solid #343a40;
+    border-radius: 40px;
+    padding: 60px 64px 40px;
+    min-height: 700px;
+    width: 350px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;    
+	}
+	.login-container__form{
+	display: flex;
+	flex-direction: column;
+	}
+	.input {
+    background: transparent !important;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid #343a40;
+    font-size: 16px;
+    font-family: 'Mulish', sans-serif;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    height: 50px;
+    color: #343a40 !important;
+	}
+	input:focus
+	{
+		background: inherit;
+		background-color: transparent;
+	}
+	input:focus-visible{
+		background-color: transparent !important;
+	}
+	input:valid{
+		background-color: transparent !important;
+	}
+	input:invalid{
+		background-color: transparent !important;
+	}
+	input:current{
+		background-color: transparent !important;
+	}
+	::placeholder {
+		color: #343a40;
+		background: inherit;
+		background-color: transparent;
+	}
+	.button {
+		background-color: rgba(255,255,255, 0.1);
+		border: none;
+		border-radius: 35px;
+		color: #343a40;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 18px;
+		height: 50px;
+		font-family: 'Mulish', sans-serif;
+		letter-spacing: 1px;
+		margin: 10px 0px;
+		outline: none;
+	}
+	.login-container__remenber-me{
+		color: #343a40;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.login-container__form label{
+		font-size: 14px;
+	}
+	.login-container__remenber-me a{
+		color: #343a40;
+		font-size: 14px;
+		text-decoration: none;
+	}
+	.login__container--social-media > div {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+	}
+	.login__container--social-media >div >img {
+		width: 30px;
+		margin-right: 10px;
+	}
+	.login__container--social-media a{
+		font-size: 16px;
+		color: #343a40;
+		text-decoration: none;
+	}
+	.login-container__register {
+		font-size: 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+	.login-container__register a {
+		font-size: 16px;
+		color: #343a40;
+		font-weight: bold;
+		text-decoration: none;
+		text-align: center;
+	}
+	.login-container__register a:hover {
+		text-decoration: underline;
+	}
 
+	@media only screen and (max-width: 600px){
+    .login-container{
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        width: 100%;
+    }
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+}
+</style>
+<body>
+	<section class="login">
+		<section class="login-container">
+			<h2 tabindex="0">Inicia Sesion</h2>
+			<form method="POST" class="login-container__form">
+				{% csrf_token %}
+				<input type="text" name="username" class="input" placeholder="Usuario" autocomplete="nope" >
+				<input type="password" name="password" class="input" placeholder="Contraseña" autocomplete="nope">
+				<input class="button login_btn" type="submit" value="Iniciar sesion">
+				<!-- <button class="button" type="submit">Iniciar sesion</button> -->
+				<div class="login-container__remenber-me">
+                    <label>
+                        <input aria-label="Recuerdame" type="checkbox" name="" id="cbox1" value="checkbox"> Recuerdame
+                    </label>
+                    <a href="{% url 'app:reset_password' %}">Olvide mi contraseña</a>
+                </div>
+			</form>
+				{% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}
+			<section class="login__container--social-media">
+                <div>
+					<a href="">
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+							width="24" height="24"
+							viewBox="0 0 24 24"
+							style=" fill:#343a40;">
+							<path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"></path>
+						</svg> 
+						<span>Inicia sesion con Google	</span> 
 
-	<style>
+					</a>
+                </div>
+                <div>
+					<a href="">
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+							width="30" height="30"
+							viewBox="0 0 32 32"
+							style=" fill:#000000;">
+							<path d="M 28 8.558594 C 27.117188 8.949219 26.167969 9.214844 25.171875 9.332031 C 26.1875 8.722656 26.96875 7.757813 27.335938 6.609375 C 26.386719 7.171875 25.332031 7.582031 24.210938 7.804688 C 23.3125 6.847656 22.03125 6.246094 20.617188 6.246094 C 17.898438 6.246094 15.691406 8.453125 15.691406 11.171875 C 15.691406 11.558594 15.734375 11.933594 15.820313 12.292969 C 11.726563 12.089844 8.097656 10.128906 5.671875 7.148438 C 5.246094 7.875 5.003906 8.722656 5.003906 9.625 C 5.003906 11.332031 5.871094 12.839844 7.195313 13.722656 C 6.386719 13.695313 5.628906 13.476563 4.964844 13.105469 C 4.964844 13.128906 4.964844 13.148438 4.964844 13.167969 C 4.964844 15.554688 6.660156 17.546875 8.914063 17.996094 C 8.5 18.109375 8.066406 18.171875 7.617188 18.171875 C 7.300781 18.171875 6.988281 18.140625 6.691406 18.082031 C 7.316406 20.039063 9.136719 21.460938 11.289063 21.503906 C 9.605469 22.824219 7.480469 23.609375 5.175781 23.609375 C 4.777344 23.609375 4.386719 23.585938 4 23.539063 C 6.179688 24.9375 8.765625 25.753906 11.546875 25.753906 C 20.605469 25.753906 25.558594 18.25 25.558594 11.742188 C 25.558594 11.53125 25.550781 11.316406 25.542969 11.105469 C 26.503906 10.410156 27.339844 9.542969 28 8.558594 Z"></path>
+						</svg>
+						<span>Inicia sesion con Twitter	</span>
+					</a>					
+                </div>
+			</section>
+			<p class="login-container__register">No tienes ninguna cuenta <a href="/">Registrate</a></p>
+		</section>
+	</section>
+</body>
+
+</html>
+	<!-- <style>
 		body,
 		html {
 			margin: 0;
@@ -140,4 +339,4 @@
 	</div>
 </body>
 
-</html>
+</html> -->

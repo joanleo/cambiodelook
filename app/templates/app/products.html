@@ -1,4 +1,7 @@
 {% extends 'app/base.html' %}
+{% block title %}
+    <title>Cambio de Look | Servicios</title>
+{% endblock %}
 
 {% block content %}
     <br>
@@ -9,14 +12,16 @@
                 <h2>Servicios</h2>
             </div>
             <div class="card card-body">
-                <table class="table-responsive{-sm|-md|-lg|-xl}">
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Categoria</th>
-                        <th>Precio</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+                <table class="table table-responsive{-sm|-md|-lg|-xl}">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Categoria</th>
+                            <th>Precio</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     {% for product in products %}
                     <tr>
                         <th>{{ product.name }}</th>

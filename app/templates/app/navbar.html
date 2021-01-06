@@ -17,12 +17,8 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         {% if request.user.is_staff %}
-        
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'app:home' %}">Resumen</a>
-        </li>
 
-        <li class="nav-item">
+        <li class="nav-item ml-4">
           <a class="nav-link" href="{% url 'eventos:calendar' %}">Agenda</a>
         </li>
         
@@ -39,12 +35,11 @@
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Productos
+            Servicios
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'app:products' %}">Inventario</a>
-            <a class="dropdown-item" href="">Ventas</a>
-            <a class="dropdown-item" href="">Historial</a>
+            <a class="dropdown-item" href="{% url 'app:products' %}">Listar</a>
+            <a class="dropdown-item" href="{% url 'app:create_product' %}">Crear</a>
           </div>
         </li>
         
@@ -53,8 +48,8 @@
             Clientes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'app:create_customer'%}">Crear</a>
             <a class="dropdown-item" href="{% url 'app:customers' %}">Listar</a>
+            <a class="dropdown-item" href="{% url 'app:create_customer'%}">Crear</a>            
           </div>
         </li>
         
@@ -70,11 +65,11 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Administracion
+            Profesionales
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="">Servicios</a>
-            <a class="dropdown-item" href="">Prestadores de servicios</a>
+            <a class="dropdown-item" href="{% url 'app:profesionals' %}">Listar</a>
+            <a class="dropdown-item" href="{% url 'app:create_profesional' %}">Crear</a>
           </div>
         </li>
         {% else %}

@@ -42,7 +42,7 @@ def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
+        print(username, password)
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
@@ -357,7 +357,7 @@ def CreateSale(request):
     #print(form)
     if request.method == 'POST':
         form = Saleform(request.POST)
-        #print(form)
+        print(form)
         #customerForm = custoForm(request.POST['customer'])
         #print(form)
         if form.is_valid:
@@ -369,7 +369,7 @@ def CreateSale(request):
         'form': form,        
     }
 
-    return render(request, 'app/create_sale1.html', context)
+    return render(request, 'app/create_sale.html', context)
 
 
     def post(self, request, *args, **kwargs):
